@@ -1,0 +1,262 @@
+/* ✨ Keyframe animations */
+@keyframes floatAnimation {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ✨ NEW: Particle animation */
+@keyframes particle-float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- ✨ UPGRADED: Main Section Styling --- */
+.contactSection {
+  padding: 100px 20px 60px; /* Reduced bottom padding to minimize empty space after content */
+  position: relative;
+  overflow: hidden;
+  /* Removed min-height: 100vh and flex centering to let content flow naturally, reducing bottom empty space */
+}
+
+/* --- ✨ NEW: Particle System --- */
+.particleContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  bottom: -20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: particle-float linear infinite;
+}
+
+.particle:nth-child(1) { left: 15%; width: 2px; height: 2px; animation-duration: 18s; animation-delay: 1s; }
+.particle:nth-child(2) { left: 40%; width: 3px; height: 3px; animation-duration: 14s; animation-delay: 3s; filter: blur(1px); }
+.particle:nth-child(3) { left: 70%; width: 1px; height: 1px; animation-duration: 22s; animation-delay: 5s; }
+.particle:nth-child(4) { left: 90%; width: 2px; height: 2px; animation-duration: 16s; animation-delay: 2s; }
+
+
+/* Wrapper for content */
+.contentWrapper {
+  position: relative;
+  z-index: 5;
+  width: 100%; /* Increased to 100% to accommodate form width */
+  display: flex;
+  justify-content: center;
+}
+
+/* The main contact card with a gradient border */
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Reduced gap for tighter spacing between design and content */
+  padding: 40px;
+  border-radius: 24px;
+  background: rgba(25, 25, 40, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #fff;
+  max-width: 950px;
+  width: 100%;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+}
+
+.contactCard::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #8A2BE2, #4A00E0, #00BFFF);
+  z-index: -1;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@media (min-width: 768px) {
+  .contactCard {
+    flex-direction: row;
+    text-align: left;
+    gap: 3rem; /* Slightly reduced but still spacious on desktop */
+  }
+}
+
+/* The animated rocket circle */
+.leftCircle {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(135deg, #4A00E0, #8A2BE2);
+  box-shadow: 0 0 20px #8A2BE2, 0 0 40px #4A00E0, 0 0 60px rgba(0, 191, 255, 0.5);
+  animation: floatAnimation 4s ease-in-out infinite;
+}
+
+.leftCircle svg {
+  color: #fff;
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+}
+
+/* Right side content */
+.rightContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Increased slightly to space out form and other elements */
+  width: 100%; /* Ensure full width for form on mobile */
+}
+
+.cardHeading {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin: 0; /* No margins to avoid extra space */
+  color: #f0f0f0;
+}
+
+.phone {
+  font-size: 1.1rem;
+  line-height: 1.4; /* Tight line height */
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.phone svg {
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.7);
+  width: 24px;
+  height: 24px;
+}
+
+/* ✨ NEW: Contact Form Styling */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.contactForm input,
+.contactForm textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.contactForm input::placeholder,
+.contactForm textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  outline: none;
+  border-color: #00BFFF;
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+}
+
+.contactForm textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.contactForm button {
+  padding: 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border: none;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #8A2BE2, #4A00E0, #00BFFF, #8A2BE2);
+  background-size: 300% 100%;
+  animation: gradient-animation 5s linear infinite;
+  align-self: flex-start;
+}
+
+.contactForm button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(74, 0, 224, 0.6);
+}
+
+/* Animated Gradient Button */
+.emailBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 16px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border: none;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 0.5rem; /* Minimal top margin for button */
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #8A2BE2, #4A00E0, #00BFFF, #8A2BE2);
+  background-size: 300% 100%;
+  animation: gradient-animation 5s linear infinite;
+  align-self: flex-start;
+}
+
+.emailBtn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(74, 0, 224, 0.6);
+}
+
+.emailBtn svg {
+  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+}
+
+.emailBtn:hover svg {
+  transform: translateX(5px);
+}

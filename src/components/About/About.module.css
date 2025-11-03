@@ -1,0 +1,167 @@
+/* ✨ NEW: Animations for the floating dots and section entry */
+@keyframes floatPulse {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ✨ NEW: Main section styling */
+.aboutSection {
+  padding: 100px 20px;
+  background-color: #0a0a14; /* Dark blue/purple background */
+  text-align: center;
+  overflow: hidden;
+  animation: fadeIn 1s ease;
+}
+
+/* Restyled elements for dark theme */
+.sectionTag {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #c7c7d1;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.aboutSection h2 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: #f0e6ff;
+  margin-bottom: 1rem;
+}
+
+/* Layout Grid */
+.aboutLayout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Give text a bit more space */
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  margin-top: 4rem;
+  text-align: left;
+}
+
+/* ✨ UPGRADED: Frosted glass text card */
+.aboutTextCard {
+  background: rgba(25, 25, 40, 0.6);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: transform 0.3s ease;
+}
+
+.aboutTextCard:hover {
+  transform: translateY(-5px);
+}
+
+.aboutTextCard p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.aboutTextCard p strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ✨ UPGRADED: Highlighted text spans */
+.aboutTextCard span {
+  /* 🎨 YOUR GRADIENT HERE for text color */
+  background: linear-gradient(90deg, #8A2BE2, #00BFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* ✨ UPGRADED: The animated visual graphic */
+.aboutVisual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px; /* Give it a fixed height for dot positioning */
+}
+
+.visualCircle {
+  width: 280px;
+  height: 280px;
+  /* 🎨 YOUR GRADIENT HERE for the circle */
+  background: linear-gradient(135deg, #4A00E0, #8A2BE2);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 0 25px #8A2BE2, 0 0 50px #4A00E0;
+  position: relative;
+  z-index: 2;
+}
+
+.visualCircleLetter {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+.visualCircleText {
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* ✨ UPGRADED: Animated floating dots */
+.floatingDot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  /* 🎨 YOUR GRADIENT HERE for the dots */
+  background: linear-gradient(135deg, #8A2BE2, #00BFFF);
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00BFFF;
+  z-index: 1;
+  animation: floatPulse 4s infinite ease-in-out;
+}
+
+/* Staggered animation delays for a natural look */
+.dot1 { top: 10%; left: 15%; animation-delay: 0s; }
+.dot2 { top: 20%; right: 10%; animation-delay: 1s; }
+.dot3 { bottom: 15%; left: 20%; animation-delay: 2s; }
+.dot4 { bottom: 25%; right: 15%; animation-delay: 3s; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .aboutLayout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  .aboutTextCard { order: 2; text-align: left; }
+  .aboutVisual { order: 1; margin-bottom: 2rem; }
+  .visualCircle { width: 220px; height: 220px; }
+  .visualCircleLetter { font-size: 4.5rem; }
+}

@@ -1,0 +1,82 @@
+/* --- Global Styles & Dark Futuristic Palette --- */
+:root {
+    --bg-color: #0a0a14; /* Deep space blue-black from Navbar */
+    --primary-text: #ffffff; /* White for readability on dark */
+    --secondary-text: rgba(255, 255, 255, 0.7); /* Subtle white */
+    --accent-color: #8A2BE2; /* Vibrant purple gradient start */
+    --accent-light: #00BFFF; /* Cyan accent end */
+    --accent-gradient: linear-gradient(90deg, #8A2BE2, #4A00E0, #00BFFF); /* Shared gradient */
+    --card-bg: rgba(25, 25, 40, 0.6); /* Glassmorphism from Contact */
+    --border-color: rgba(255, 255, 255, 0.1); /* Subtle borders */
+    --white: #FFFFFF;
+    --font-sans: 'Poppins', sans-serif;
+    --border-radius-pill: 50px;
+    --border-radius-card: 24px; /* Bolder for dark cards */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: linear-gradient(-45deg, var(--bg-color), #100f1d, #1a1a2e); /* Subtle animated bg from Footer */
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite; /* Gentle global animation */
+    color: var(--secondary-text);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Prevent horizontal scroll issues */
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Section base (dark-optimized) */
+section {
+    padding: 80px 0; /* Slightly reduced for tighter flow */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative; /* For particles/overlays */
+}
+
+/* Container (responsive dark padding) */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Tighter on sides for immersion */
+    width: 100%;
+}
+
+/* Motion/Animation Perf Boost */
+[motion] {
+    will-change: transform, opacity;
+}
+
+/* Dark Mode Text Overrides (for headings/links) */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-text);
+}
+
+a {
+    color: var(--accent-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}

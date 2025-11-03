@@ -1,0 +1,201 @@
+/* ✨ Keyframe for text gradient animation */
+@keyframes text-gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Main Navbar Styling --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.2rem 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(10, 10, 20, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ✨ UPGRADED: The main logo container (merged for image + text) */
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Space between icon and text */
+}
+
+/* --- NEW: Styling for the logo image --- */
+.logoImage {
+  height: 28px; /* Slightly smaller for better text alignment; adjust up/down as needed */
+  width: auto;
+  vertical-align: middle; /* Ensures perfect baseline alignment with text */
+}
+
+.logo span {
+    background: linear-gradient(90deg, #8A2BE2, #4A00E0, #00BFFF, #8A2BE2);
+    background-size: 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-gradient-animation 8s linear infinite;
+}
+
+/* --- Desktop Navigation --- */
+.navMenu {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navLinks a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navLinks a:hover {
+    color: #fff;
+}
+
+.navLinks a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #8A2BE2, #00BFFF);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.navLinks a.active {
+    color: #fff;
+}
+
+.navLinks a.active::after {
+    transform: scaleX(1);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.6rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btnPrimary {
+    background: linear-gradient(90deg, #8A2BE2, #4A00E0);
+    color: #fff;
+    box-shadow: 0 8px 20px -8px rgba(74, 0, 224, 0.6);
+}
+
+.btnPrimary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px -8px rgba(74, 0, 224, 0.8);
+}
+
+/* --- Mobile Menu & Hamburger --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    color: #fff;
+    z-index: 1001;
+}
+
+.mobileNavMenu {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .navMenu {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .mobileNavMenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 6rem 2rem 2rem;
+        background-color: rgba(10, 10, 20, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        animation: fadeIn 0.3s ease;
+    }
+    .mobileNavLinks {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .mobileNavLinks a {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+}
+
+/* Mobile adjustment for smaller logo */
+@media (max-width: 768px) {
+  .logoImage {
+    height: 22px; /* Scales down on mobile for compactness */
+  }
+  
+  .logo {
+    font-size: 1rem; /* Matches smaller screen text */
+  }
+}
