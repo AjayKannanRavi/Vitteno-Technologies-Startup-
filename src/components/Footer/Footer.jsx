@@ -18,6 +18,25 @@ const BoltIcon = () => (
   </svg>
 );
 
+// New social media icons
+const LinkedInIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8v8M16 8a6 6 0 0 1 6 6v7h4V14a10 10 0 0 0-6-9M2 9h4v12H2zM6 9c0 3 4 3 4 3"></path>
+  </svg>
+);
+
+const FacebookIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+  </svg>
+);
+
+const XIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.28 3.9A12.16 12.16 0 0 1 3.3 3.39a4.27 4.27 0 0 0 1.32 5.71 4.28 4.28 0 0 1-1.93-.54v.05a4.28 4.28 0 0 0 3.44 4.2A8.58 8.58 0 0 1 2 18.13a8.6 8.6 0 0 0 2.6.32 4.3 4.3 0 0 0 1.28-.16A4.28 4.28 0 0 1 5 19a4.29 4.29 0 0 1 4.25 4.35 8.58 8.58 0 0 1-6 1.15 12.14 12.14 0 0 0 6.58 1.92c7.88 0 12.18-6.53 12.18-12.18 0-.19 0-.37-.01-.56A8.6 8.6 0 0 0 22.46 6z"></path>
+  </svg>
+);
+
 // Inner stagger variant for Footer elements (consistent with other pages)
 const contentVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -89,6 +108,38 @@ const Footer = () => {
           >
             <EmailIcon /> vitteno.tech@gmail.com
           </motion.a>
+          <motion.div 
+            className={styles.socialLinks}
+            custom={6}
+          >
+            <motion.a 
+              href="www.linkedin.com/in/vitteno-technologies-3a5545398" 
+              className={styles.socialLink}
+              custom={0}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedInIcon />
+            </motion.a>
+            <motion.a 
+              href="https://www.facebook.com/vitteno-techh" 
+              className={styles.socialLink}
+              custom={1}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FacebookIcon />
+            </motion.a>
+            <motion.a 
+              href="https://x.com/vittenoTech" 
+              className={styles.socialLink}
+              custom={2}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <XIcon />
+            </motion.a>
+          </motion.div>
         </motion.div>
 
         <motion.p 
@@ -96,7 +147,7 @@ const Footer = () => {
           variants={contentVariants}
           initial="hidden"
           animate="visible"
-          custom={6}
+          custom={7}
         >
           © 2025 Vitteno. All rights reserved.
         </motion.p>
